@@ -18,7 +18,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-bin
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -52,4 +52,3 @@ docs/_build/
 etc
 
 key.py
-!bankAPI_env/bin/activate
