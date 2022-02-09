@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bankDBAPI</title>
+    <style>
+      .wrapper {
+        width: 1000px;
+        margin: 0 auto;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header wrapper">
+      <h1 class="headerName">EconDBAPI</h1>
+      <h1 class="drakeU">DRAKE UNIVERSITY</h1>
+    </div>
+    <hr />
+    <div class="body wrapper">
+      <h1>What is this API?</h1>
+      <p>
+        This API utilizes bank_db provided by Dr.Eric Manley to show the content
+        without SQL queries. All the data are provided by JSON format
+      </p>
+      <h1>How to use this API</h1>
+      <h2>To get the datadict table</h2>
+      <p>address/datadict</p>
+      <p>This returns the content of all the data_dict table in JSON</p>
+      <hr />
+      <h2>To get the fdic_fail table</h2>
+      <p>address/fdicfail</p>
+      <p>This returns the content of all the fdic_fail table in JSON</p>
+      <p>address/fdicfail/{bank_id}</p>
+      <p>
+        This returns the content of all the fdic_fail table that has same
+        bank_id as bank_id in url in JSON
+      </p>
+      <hr />
+      <h2>To get the other tables</h2>
+      <p>address/table_{table name}</p>
+      <p>This returns the content of all the table name table in JSON</p>
+      <p>address/fdicfail/{bank_id}</p>
+      <p>
+        This returns the content of all the table nametable that has same
+        bank_id as bank_id in url in JSON
+      </p>
+      <h3>Example for other tables</h3>
+      <p>address/CALL8786</p>
+      <p>This returns all the content from table_CALL8786 in JSON</p>
+      <p>address/CALL8786/28</p>
+      <p>
+        This returns all the content from table_CALL8786 that has bank_id of 28
+        in JSON
+      </p>
+    </div>
+    <hr />
+    <div class="footer wrapper">
+      <p>
+        2021 - Made for Economics Data Science Research Group for Drake
+        University - Jaehyeok Choi
+      </p>
+    </div>
+  </body>
+</html>
