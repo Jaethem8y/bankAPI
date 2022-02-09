@@ -18,7 +18,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
+bin
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -48,4 +48,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+#nginx
+etc
+
 key.py
+!bankAPI_env/bin/activate
