@@ -2,7 +2,7 @@ from sqlalchemy import MetaData, create_engine, Table, exc
 from sqlalchemy.orm import sessionmaker
 from key import key
 
-def allRepo(tableName:str)->object:
+def allRepo(table_name:str)->object:
   engine = create_engine(key)
   metadata = MetaData(engine)
   Session = sessionmaker(bind=engine)
@@ -11,7 +11,7 @@ def allRepo(tableName:str)->object:
     start = 0
     end = 10000
     ret = []
-    table = Table(tableName,metadata,autoload=True,autoload_with=engine)
+    table = Table(table_name,metadata,autoload=True,autoload_with=engine)
     while True:
       temp = session.query(table)[start:end]
       if temp == []:

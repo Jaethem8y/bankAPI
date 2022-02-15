@@ -2,15 +2,14 @@ from sqlalchemy import MetaData, create_engine, Table, exc
 from sqlalchemy.orm import sessionmaker
 from key import key
 
-def singleRepo(table_name:str, start:int=0, end:int=10000)->object:
+def tableLengthRepo(table_name:str)->object:
   engine = create_engine(key)
-  metadata = MetaData(engine)
   Session = sessionmaker(bind=engine)
+  metadata = MetaData(engine)
   session = Session()
-  print("start:",start,"end:",end)
+  table = Table(table_name,metadata,autoload=True,autoload_with=engine)
   try:
-    table = Table(table_name,metadata,autoload=True,autoload_with=engine)
-    return session.query(table)[start:end]
+    return session.query(table).count()
   except exc.NoSuchTableError:
     return {"invalid query: table does not exist."}
 

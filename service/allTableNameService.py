@@ -1,7 +1,7 @@
 from repository.allRepo import allRepo
-def allTableNameService(tableName:str)->object:
-  if tableName == "data_dict" or tableName == "fdic_fail":
-    return allRepo(tableName) 
+def allTableNameService(table_name:str)->object:
+  if table_name == "data_dict" or table_name == "fdic_fail":
+    return allRepo(table_name) 
   else:
-    return allRepo("table_"+tableName)
+    return allRepo("table_"+table_name)
 

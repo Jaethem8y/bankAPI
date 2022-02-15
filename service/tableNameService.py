@@ -1,8 +1,8 @@
 from repository.singleRepo import singleRepo
 
-def tableNameService(tableName:str, start:int = 0, end:int = 10000)->object:
-  if tableName == "data_dict" or tableName == "fdic_fail":
-    return singleRepo(tableName, start, end) 
+def tableNameService(table_name:str, start:int, end:int)->object:
+  if table_name == "data_dict" or table_name == "fdic_fail":
+    return singleRepo(table_name, start, end) 
   else:
-    tableNameComplete = "table_"+tableName
+    tableNameComplete = "table_"+table_name
     return singleRepo(tableNameComplete, start, end)
