@@ -1,4 +1,3 @@
-from jinja2 import TemplateRuntimeError
 from sqlalchemy import MetaData, create_engine, Table, exc
 from sqlalchemy.orm import sessionmaker
 from key import key
@@ -15,7 +14,6 @@ def allRepo(tableName:str)->object:
     table = Table(tableName,metadata,autoload=True,autoload_with=engine)
     while True:
       temp = session.query(table)[start:end]
-      print(TemplateRuntimeError)
       if temp == []:
         return ret
       print(start)
