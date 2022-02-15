@@ -1,8 +1,8 @@
 from repository.describtionRepo import descriptionRepo
 
-def descriptionTableService(tableName:str)->object:
-  if tableName == "data_dict" or tableName == "fdic_fail":
-    return descriptionRepo(tableName) 
+def descriptionTableService(table_name:str)->object:
+  if table_name == "data_dict" or table_name == "fdic_fail":
+    return descriptionRepo(table_name) 
   else:
-    tableNameComplete = "table_"+tableName
+    tableNameComplete = "table_"+table_name
     return descriptionRepo(tableNameComplete)
