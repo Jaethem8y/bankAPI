@@ -5,7 +5,7 @@ def tableNameService(table_name:str, start:int,end:int,search_col:str,search:str
     end = start + 10000
   print("service:",start,"end:",end)
   if table_name != "data_dict" and table_name != "fdic_fail":
-    tableName = "table_"+table_name
+    table_name = "table_"+table_name
   return singleRepo(table_name, start, end, search_col,search) 
 
 
