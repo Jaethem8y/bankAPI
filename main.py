@@ -71,8 +71,8 @@ async def getTableColName():
   return showTableService()
 
 @app.get(path="/{table_name}",tags=["table_name"])
-async def getRowsByTableName(table_name:str,start:int=0):
-  return tableNameService(table_name,start)
+async def getRowsByTableName(table_name:str,start:int=0,end:int=-1):
+  return tableNameService(table_name,start,end)
 
 @app.get(path="/describe/{table_name}",tags=["describe"])
 async def getTableDescribtion(table_name:str):
