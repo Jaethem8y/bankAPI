@@ -1,7 +1,8 @@
-from ensurepip import version
 from fastapi import FastAPI, Request
 from fastapi.responses import RedirectResponse
-from fastapi.openapi.utils import get_openapi
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 from service.tableNameService import tableNameService
 from service.showTableService import showTableService
@@ -59,6 +60,11 @@ app = FastAPI(
   description=description,
   version="1.0.0",
   openapi_tags=tags_metadata
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
 )
 
 
