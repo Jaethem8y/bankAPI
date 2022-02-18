@@ -8,6 +8,9 @@ from service.showTableService import showTableService
 from service.allTableNameService import allTableNameService
 from service.descriptionTableService import descriptionTableService
 from service.tableLengthService import tableLengthService
+from repository.concurrentRepo import concurrentRepo
+
+import time
 # from postModels.Limit import Limit
 description = """
 ## What is this
@@ -62,25 +65,29 @@ app = FastAPI(
 )
 
 
-@app.get(path="/")
-async def getIndex(request:Request):
-  return RedirectResponse("/docs")
+# @app.get(path="/")
+# async def getIndex(request:Request):
+#   return RedirectResponse("/docs")
 
-@app.get(path="/tables",tags=["tables"])
-async def getTableColName():
-  return showTableService()
+# @app.get(path="/tables",tags=["tables"])
+# async def getTableColName():
+#   return showTableService()
 
-@app.get(path="/{table_name}",tags=["table_name"])
-async def getRowsByTableName(table_name:str,start:int=0,end:int=-1,search_col:str="",search:str=""):
-  return tableNameService(table_name,start,end,search_col,search)
+@app.get(path="/{table_name}")
+async def getRowsByTableName(table_name:str):
+  start = time.time()
+  data =  concurrentRepo(table_name)
+  end = time.time()
+  print(end-start)
+  return data
 
-@app.get(path="/describe/{table_name}",tags=["describe"])
-async def getTableDescribtion(table_name:str):
-  return descriptionTableService(table_name)
+# @app.get(path="/describe/{table_name}",tags=["describe"])
+# async def getTableDescribtion(table_name:str):
+#   return descriptionTableService(table_name)
 
-@app.get(path="/length/{table_name}",tags=["length"])
-async def getTableLength(table_name:str):
-  return tableLengthService(table_name)
+# @app.get(path="/length/{table_name}",tags=["length"])
+# async def getTableLength(table_name:str):
+#   return tableLengthService(table_name)
 # @app.get(path="/all/{table_name}")
 # async def getAllRowsByTableName(table_name):
 #   return allTableNameService(table_name)
