@@ -2,6 +2,10 @@ from ensurepip import version
 from fastapi import FastAPI, Request
 from fastapi.responses import RedirectResponse
 from fastapi.openapi.utils import get_openapi
+from fastapi.middleware.cors import CORSMiddleware
+
+
+
 
 from service.tableNameService import tableNameService
 from service.showTableService import showTableService
@@ -64,6 +68,10 @@ app = FastAPI(
   openapi_tags=tags_metadata
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
 
 # @app.get(path="/")
 # async def getIndex(request:Request):
@@ -78,7 +86,7 @@ async def getRowsByTableName(table_name:str):
   start = time.time()
   data =  concurrentRepo(table_name)
   end = time.time()
-  print(end-start)
+  print(end-start )
   return data
 
 # @app.get(path="/describe/{table_name}",tags=["describe"])
