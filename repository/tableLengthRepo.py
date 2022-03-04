@@ -9,8 +9,11 @@ def tableLengthRepo(table_name:str)->object:
   session = Session()
   table = Table(table_name,metadata,autoload=True,autoload_with=engine)
   try:
-    return session.query(table).count()
+    ret = session.query(table).count()
+    session.close()
+    return ret
   except exc.NoSuchTableError:
+    session.close()
     return {"invalid query: table does not exist."}
 
 

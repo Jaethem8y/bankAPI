@@ -15,12 +15,14 @@ def allRepo(table_name:str)->object:
     while True:
       temp = session.query(table)[start:end]
       if temp == []:
+        session.close()
         return ret
       print(start)
       ret.extend(temp)
       start = end
       end += 10000
   except exc.NoSuchTableError:
+    session.close()
     return {"invalid query: table does not exist."}
 
 

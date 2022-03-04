@@ -7,5 +7,6 @@ def tablesRepo():
   metadata = MetaData(engine)
   Session = sessionmaker(bind=engine)
   session = Session()
- 
-  return session.execute("show tables").all()
+  ret = session.execute("show tables").all()
+  session.close()
+  return ret

@@ -6,8 +6,9 @@ def descriptionRepo(table_name:str)->object:
   engine = create_engine(key)
   Session = sessionmaker(bind=engine)
   session = Session()
- 
-  return session.execute("describe "+table_name).all()
+  ret = session.execute("describe "+table_name).all()
+  session.close()
+  return ret
 
 
 

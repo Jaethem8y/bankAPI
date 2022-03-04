@@ -12,9 +12,14 @@ def singleRepo(table_name:str, start:int,end:int,search_col:str,search:str)->obj
     table = Table(table_name,metadata,autoload=True,autoload_with=engine)
     print("search_col",search_col)
     if search_col == "":
-      return session.query(table)[start:end]
-    return session.query(table).filter(table.c[search_col].like("%"+search+"%"))[start:end]
+      ret = session.query(table)[start:end]
+      session.close()
+      return ret
+    ret = session.query(table).filter(table.c[search_col].like("%"+search+"%"))[start:end]
+    session.close()
+    return ret
   except exc.NoSuchTableError:
+    session.close()
     return {"invalid query: table does not exist."}
 
 
