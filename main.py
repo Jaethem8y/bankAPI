@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import RedirectResponse
+from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 
-
+import uvicorn
 
 from service.tableNameService import tableNameService
 from service.showTableService import showTableService
@@ -55,21 +56,23 @@ tags_metadata = [
   }
 ]
 
+
+middleware = [
+    Middleware(
+        CORSMiddleware,
+        allow_origins=['*'],
+        allow_credentials=True,
+        allow_methods=['*'],
+        allow_headers=['*']
+    )
+]
 app = FastAPI(
   title="Bank API",
   description=description,
   version="1.0.0",
-  openapi_tags=tags_metadata
+  openapi_tags=tags_metadata,
+  middleware=middleware
 )
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=['*'],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
-
 
 @app.get(path="/")
 async def getIndex(request:Request):
@@ -102,3 +105,6 @@ async def getTableLength(table_name:str):
 #   return tableNameService(table_name,body.limit1,body.limit2)
   
   
+
+# if __name__ == "__main__":
+#     uvicorn.run(app, port=3002)
