@@ -1,4 +1,6 @@
-FROM python:3.9-slim
+FROM node:6.4.0
+RUN apt-get update || : && apt-get install python -y
+RUN apt-get install python3-pip -y
 
 WORKDIR app/src
 
