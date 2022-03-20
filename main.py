@@ -10,6 +10,9 @@ from service.showTableService import showTableService
 from service.allTableNameService import allTableNameService
 from service.descriptionTableService import descriptionTableService
 from service.tableLengthService import tableLengthService
+
+
+
 # from postModels.Limit import Limit
 description = """
 ## What is this
@@ -105,6 +108,3 @@ async def getTableLength(table_name:str):
 #   return tableNameService(table_name,body.limit1,body.limit2)
   
   
-
-# if __name__ == "__main__":
-#     uvicorn.run(app, port=3002)

@@ -22,3 +22,5 @@ uvicorn==0.17.4
 uvloop==0.16.0
 watchgod==0.7
 websockets==10.1
+mangum==0.11.0
+
