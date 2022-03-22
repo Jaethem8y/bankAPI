@@ -96,8 +96,8 @@ async def getDataDictTable(item_code:str="", meaning:str=""):
   
 
 @app.get(path="/{table_name}",tags=["table_name"])
-async def getRowsByTableName(table_name:str,start:int=0,end:int=-1,search_col:str="",search:str=""):
-  return tableNameService(table_name,start,end,search_col,search)
+async def getRowsByTableName(table_name:str,start:int=0,end:int=-1,bank_id:str="",year:str="",quarter="",score=""):
+  return tableNameService(table_name,start,end,bank_id,year,quarter,score)
 
 @app.get(path="/describe/{table_name}",tags=["describe"])
 async def getTableDescribtion(table_name:str):
