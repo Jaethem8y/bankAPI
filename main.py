@@ -16,7 +16,9 @@ from service.tableLengthService import tableLengthService
 
 # from postModels.Limit import Limit
 description = """
-# If the text contains typo or ambiguous, please contact Jaehyeok Choi at jaehyeok.choi@drake.edu for change or explanation.
+* If the text contains typo or ambiguous, please contact Jaehyeok Choi at jaehyeok.choi@drake.edu for change or explanation.
+
+
 ## What is this
 Bank API developed for Drake University Economics Data Science Team Led by Dr. Eric Manley,
  \nCreators: Jaehyeok Choi, Jacob Danner
