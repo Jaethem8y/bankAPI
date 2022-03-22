@@ -4,6 +4,7 @@ from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 
 import uvicorn
+from service.dataDictService import dataDictService
 
 from service.tableNameService import tableNameService
 from service.showTableService import showTableService
@@ -46,6 +47,10 @@ tags_metadata = [
     "description":"Returns the lists of tables that are in bankDB",
   },
   {
+    "name":"data_dict",
+    "description":"When the table_name is replaced by table name form data_dict query, it returns the content of that table",
+  },
+  {
     "name":"table_name",
     "description":"When the table_name is replaced by table name form data_dict query, it returns the content of that table",
   },
@@ -84,6 +89,11 @@ async def getIndex(request:Request):
 @app.get(path="/tables",tags=["tables"])
 async def getTableColName():
   return showTableService()
+
+@app.get(path="/data_dict",tags=["data_dict"])
+async def getDataDictTable(item_code:str="", meaning:str=""):
+  return  dataDictService(item_code,meaning)
+  
 
 @app.get(path="/{table_name}",tags=["table_name"])
 async def getRowsByTableName(table_name:str,start:int=0,end:int=-1,search_col:str="",search:str=""):

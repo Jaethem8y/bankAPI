@@ -2,6 +2,7 @@ from sqlalchemy import MetaData, create_engine, Table, exc
 from sqlalchemy.orm import sessionmaker
 from key import key
 
+
 def allRepo(table_name:str)->object:
   engine = create_engine(key)
   metadata = MetaData(engine)
