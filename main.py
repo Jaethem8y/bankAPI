@@ -19,7 +19,7 @@ description = """
 ## If the text contains typo or ambiguous, please contact Jaehyeok Choi at jaehyeok.choi@drake.edu for change or explanation.
 ## What is this
 Bank API developed for Drake University Economics Data Science Team Led by Dr. Eric Manley,
- \nContributers: Jaehyeok Choi, Jacob Danner
+ \nCreators: Jaehyeok Choi, Jacob Danner
 
 ## Why this API was made
 This api serves as bridge for Bank Fail Database built by Dr. Eric Manley and the web client
