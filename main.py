@@ -16,6 +16,7 @@ from service.tableLengthService import tableLengthService
 
 # from postModels.Limit import Limit
 description = """
+## If the text contains typo or ambiguous, please contact Jaehyeok Choi at jaehyeok.choi@drake.edu for change or explanation.
 ## What is this
 Bank API developed for Drake University Economics Data Science Team Led by Dr. Eric Manley,
  \nContributers: Jaehyeok Choi, Jacob Danner
@@ -39,6 +40,21 @@ if table has less than 10,000 rows, then the regular query without query-string 
 * **get request to "/{table_names}?start=x" - such as "/CALL8786/start=10000"** will query data starting from row 10000 to row 20000
 * **get request to "/describe/{table_name}" - such as "/describe/table_name"** will return a result equivalen of describe table_name in mysql
 * **get request to "/length/{table_name}" - "such as /length/CALL8786"** will return the length of the table (number of rows in table)
+
+## Advanced Search for /data_dict
+* when searching for /data_dict, the item_code and meaning can be specified for the search purpose
+* **/data_dict?item_code=RCFA ** will return all the data_dict content which item_code column contains "RCFA"
+* **/data_dict?meaning=total ** will return all the data_dict content which meaning column contains "total"
+* **/data_dict?item_code=RCFA&meaing=total ** will return all data_dict content which column item_code contains "RCFA" and column meaning contains "total"
+
+## Advanced Search for /{table_name}
+* when searching for table_name, there are start, end, bank_id, year, quarter, and score that user can specify
+* start and end is just a numeric values for which index user wants to search
+* for example, **/CALL8786?start=100&end=800** will return 30th to 800th rows from CALL8786 table.
+* the range of start and end cannot exceed 10000. For example, if start = 10 and end = 10000000, then automatically, it will return rows 10 to 10010 instead of 10 to 100000000
+* when bank_id, year, quarter, and score is specified, it will return result that contains such value
+* for example, **/CALL8786?bank_id=28&year=1988&quarter=3&score=2** will return all the result that bank_id contains 1988, quarter contains 3, and CALL8786 score contains 2.
+
 """
 
 tags_metadata = [
@@ -48,7 +64,7 @@ tags_metadata = [
   },
   {
     "name":"data_dict",
-    "description":"When the table_name is replaced by table name form data_dict query, it returns the content of that table",
+    "description":"returns all content from data_dict table",
   },
   {
     "name":"table_name",
